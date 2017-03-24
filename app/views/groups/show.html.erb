@@ -3,20 +3,20 @@
 
     <span class="pull-right">
       <% if current_user && current_user.is_member_of?(@group) %>
-        <label class="label label-success"> 群组成员 </label>
-            <%= link_to("Quit Group", quit_group_path(@group), method: :post, class: "btn btn-default") %>
-            <%= link_to("Write a Review", new_group_post_path(@group), class: "btn btn-default pull-right") %>
+        <label class="label label-success"> 已收藏 </label>
+            <%= link_to("取消收藏", quit_group_path(@group), method: :post, class: "btn btn-default") %>
+            <%= link_to("写评论", new_group_post_path(@group), class: "btn btn-default pull-right") %>
 
       <% else %>
-        <label class="label label-warning"> 不是群组成员 </label>
-            <%= link_to("Join Group", join_group_path(@group), method: :post, class: "btn btn-default") %>
+        <label class="label label-warning"> 尚未收藏电影 </label>
+            <%= link_to("收藏电影", join_group_path(@group), method: :post, class: "btn btn-default") %>
       <% end %>
     </span>
 
     <!-- <%= link_to("Write a Review", new_group_post_path(@group), class: "btn btn-default pull-right") %> -->
 
     <% if current_user && current_user == @group.user %>
-    <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
+    <%= link_to("编辑", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @group.title %></h2>
